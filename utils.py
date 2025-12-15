@@ -19,6 +19,30 @@ CATEGORICAL_COLS = ["protocol_type", "service", "flag"]
 
 FEATURE_COLUMNS = [c for c in COLUMNS if c not in ["label", "difficulty_level"]]
 
+DOS = {
+    "back","land","neptune","pod","smurf","teardrop",
+    "mailbomb","apache2","processtable","udpstorm"
+}
+PROBE = {"satan","ipsweep","nmap","portsweep","mscan","saint", "worm"}
+R2L = {
+    "guess_passwd","ftp_write","imap","phf","multihop","warezmaster","warezclient",
+    "spy","xlock","xsnoop","snmpguess","snmpgetattack","httptunnel","sendmail","named"
+}
+U2R = {"buffer_overflow","loadmodule","perl","rootkit","ps","sqlattack","xterm"}
+
+def to_category(lbl: str) -> str:
+    if lbl == "normal":
+        return "normal"
+    if lbl in DOS:
+        return "dos"
+    if lbl in PROBE:
+        return "probe"
+    if lbl in R2L:
+        return "r2l"
+    if lbl in U2R:
+        return "u2r"
+    raise ValueError(f"Unmapped attack label: {lbl}")
+
 def load_split(name: str, data_dir: str):
 
     X_path, y_path = data_dir / f"X_{name}.npy", data_dir / f"y_{name}.npy"
@@ -31,3 +55,18 @@ def load_split(name: str, data_dir: str):
     X = np.loadtxt(X_path, delimiter=",", dtype=np.float32)
     y = np.loadtxt(y_path, delimiter=",")
     return X, y
+
+def make_binary_labels(y, normal_class_id):
+    """
+    Convert multi-class labels to binary:
+      0 = normal class
+      1 = any other class (intrusive)
+
+    Args:
+        y :    (array_like Shape (m,))
+        normal_class_id : (int)             Encoded id of the 'normal' class
+    
+    Returns:
+        y_bin : (array_like Shape (m,))     Binary labels (0 = normal, 1 = intrusive).
+    """
+    return (y != normal_class_id).astype(int)
