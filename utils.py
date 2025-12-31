@@ -43,17 +43,18 @@ def to_category(lbl: str) -> str:
         return "u2r"
     raise ValueError(f"Unmapped attack label: {lbl}")
 
-def load_split(name: str, data_dir: str):
+def load_split(name: str, data_dir):
 
-    X_path, y_path = data_dir / f"X_{name}.npy", data_dir / f"y_{name}.npy"
-    if X_path.exists() and y_path.exists():
-        X = np.load(X_path, allow_pickle=False)
-        y = np.load(y_path, allow_pickle=False)
-        return X, y
-    # fallback: load from CSV if .npy not found
-    X_path, y_path = data_dir / f"X_{name}.csv", data_dir / f"y_{name}.csv"
-    X = np.loadtxt(X_path, delimiter=",", dtype=np.float32)
-    y = np.loadtxt(y_path, delimiter=",")
+    X_path = data_dir / f"X_{name}.npy"
+    y_path = data_dir / f"y_{name}.npy"
+
+    if not X_path.exists():
+        raise FileNotFoundError(f"Missing feature file: {X_path}")
+    if not y_path.exists():
+        raise FileNotFoundError(f"Missing label file: {y_path}")
+
+    X = np.load(X_path, allow_pickle=False)
+    y = np.load(y_path, allow_pickle=False)
     return X, y
 
 def make_binary_labels(y, normal_class_id):
