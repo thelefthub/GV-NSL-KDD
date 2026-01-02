@@ -24,4 +24,5 @@
 \contentsline {section}{\numberline {4.3}Limitations and Future Work}{17}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Updates based on the poster presentation feedbacks}{18}{section.4.4}%
 \contentsline {chapter}{\chapternumberline {5}Conclusion}{19}{chapter.5}%
-\contentsline {chapter}{Bibliography}{21}{chapter*.11}%
+\contentsline {section}{\numberline {5.1}Contributions}{19}{section.5.1}%
+\contentsline {chapter}{Bibliography}{20}{chapter*.11}%

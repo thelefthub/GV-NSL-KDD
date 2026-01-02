@@ -1,4 +1,4 @@
-\documentclass[master=eelt,masteroption=ec]{kulemt}
+\documentclass[oneside, master=eelt,masteroption=ec]{kulemt}
 \setup{
   title={Detecting Cyber Threats with Machine Learning: A Comparative Analysis of Linear, Tree-Based, and Neural Models },
   author={Marti Geudens \and r0934872 \and Piet Verguts \and r0954535},
@@ -15,7 +15,7 @@
 
 % Finally the hyperref package is used for pdf files.
 % This can be commented out for printed versions.
-\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+
 \usepackage[table]{xcolor} % 'table'optie is handig voor cell backgrounds
 \usepackage{xltabular}    % combinatie van longtable + tabularx
 \usepackage[table]{xcolor}
@@ -24,14 +24,8 @@
 \usepackage[table]{xcolor} 
 \usepackage{pdflscape}
 \usepackage{placeins}
-%%%%%%%
-% The lipsum package is used to generate random text.
-% You never need this in a real master's thesis text!
-\IfFileExists{lipsum.sty}%
- {\usepackage{lipsum}\SetLipsumDefault{11-13}}%
- {\newcommand{\lipsum}[1][11-13]{\par And some text: lipsum ##1.\par}}
-%%%%%%%
 \usepackage{longtable}
+\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
 %%%%%%%
 %\includeonly{chapter-n}
 \begin{document}
