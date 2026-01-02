@@ -1,0 +1,44 @@
+\begin{thebibliography}{1}
+
+\bibitem{abrar2020machine}
+I.~Abrar, Z.~Ayub, F.~Masoodi, and A.~Bamhdi, ``A machine learning approach for
+  intrusion detection system on nsl-kdd dataset,'' in {\em Proceedings of the
+  IEEE International Conference on Cyber Security (ICOSEC)}, pp.~919--924,
+  2020.
+
+\bibitem{gawand2025improved}
+S.~Gawand and D.~Meesala, ``Improved framework for detecting and predicting
+  various cyber attacks using the nsl-kdd dataset,'' {\em International
+  Research Journal of Advanced Engineering Hub (IRJAEH)}, vol.~3, pp.~834--840,
+  2025.
+
+\bibitem{tavallaee2009detailed}
+M.~Tavallaee, E.~Bagheri, W.~Lu, and A.~A. Ghorbani, ``A detailed analysis of
+  the kdd cup 99 data set,'' in {\em Proceedings of the IEEE Symposium on
+  Computational Intelligence for Security and Defense Applications}, (Ottawa,
+  ON, Canada), pp.~1--6, 2009.
+
+\bibitem{hegde2024intrusion}
+R.~Hegde, S.~Likitha, and M.~Natesh, ``Intrusion detection system using machine
+  learning based on nsl-kdd dataset,'' in {\em Proceedings of the International
+  Conference on Recent Advances in Science and Engineering Technology
+  (ICRASET)}, (B. G. Nagara, Mandya, India), pp.~1--5, 2024.
+
+\bibitem{hong2021machine}
+R.-F. Hong, S.-C. Horng, and S.-S. Lin, ``Machine learning in cyber security
+  analytics using nsl-kdd dataset,'' in {\em Proceedings of the International
+  Conference on Technologies and Applications of Artificial Intelligence
+  (TAAI)}, (Taichung, Taiwan), pp.~260--265, 2021.
+
+\bibitem{ali2025deep}
+M.~L. Ali, K.~Thakur, S.~Schmeelk, J.~Debello, and D.~Dragos, ``Deep learning
+  vs. machine learning for intrusion detection in computer networks: A
+  comparative study,'' {\em Applied Sciences}, vol.~15, no.~4, p.~1903, 2025.
+
+\bibitem{rawat2019intrusion}
+S.~Rawat, A.~Srinivasan, and R.~Vinayakumar, ``Intrusion detection systems
+  using classical machine learning techniques versus integrated unsupervised
+  feature learning and deep neural network,'' {\em arXiv preprint
+  arXiv:1910.01114}, 2019.
+
+\end{thebibliography}

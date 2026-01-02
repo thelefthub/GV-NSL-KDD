@@ -1,0 +1,84 @@
+\documentclass[master=eelt,masteroption=ec]{kulemt}
+\setup{
+  title={Detecting Cyber Threats with Machine Learning: A Comparative Analysis of Linear, Tree-Based, and Neural Models },
+  author={Marti Geudens \and r0934872 \and Piet Verguts \and r0954535},
+  promotor={Prof.\,dr.\,ir.\ Knows Better},
+  assessor={Ir.\,Kn. Owsmuch\and K. Nowsrest},
+  assistant={Diwas Lamsal}}
+% Remove the "%" on the next line for generating the cover page
+%\setup{coverpageonly}
+% Remove the "%" before the next "\setup" to generate only the first pages
+% (e.g., if you are a Word user).
+%\setup{frontpagesonly}
+
+% If you want to include other LaTeX packages, do it here. 
+
+% Finally the hyperref package is used for pdf files.
+% This can be commented out for printed versions.
+\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+\usepackage[table]{xcolor} % 'table'optie is handig voor cell backgrounds
+\usepackage{xltabular}    % combinatie van longtable + tabularx
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{xltabular,enumitem} 
+\usepackage[table]{xcolor} 
+\usepackage{pdflscape}
+\usepackage{placeins}
+%%%%%%%
+% The lipsum package is used to generate random text.
+% You never need this in a real master's thesis text!
+\IfFileExists{lipsum.sty}%
+ {\usepackage{lipsum}\SetLipsumDefault{11-13}}%
+ {\newcommand{\lipsum}[1][11-13]{\par And some text: lipsum ##1.\par}}
+%%%%%%%
+\usepackage{longtable}
+%%%%%%%
+%\includeonly{chapter-n}
+\begin{document}
+
+\tableofcontents*
+
+\begin{abstract}
+  This study evaluates the effectiveness of three distinct machine learning model families, 
+  Logistic Regression, Random Forest, and Neural Networks for network intrusion detection 
+  using the NSL-KDD benchmark dataset. Motivated by the increasing complexity of cyber threats 
+  and recent high-profile breaches, the research compares linear, ensemble-based, 
+  and non-linear approaches in both binary and multi-class classification scenarios. 
+  Utilizing a unified preprocessing pipeline and addressing severe class imbalance through 
+  class-weighted learning and decision-threshold optimization, the project analyzes model performance 
+  beyond aggregate accuracy, with a specific focus on rare attack categories like 
+  User-to-Root (U2R) and Remote-to-Local (R2L). Key results indicate that while all 
+  models achieve high binary accuracy (up to 77.8\%), their ability to generalize to 
+  unseen attack patterns in the test set varies significantly. Random Forest provides the 
+  best stability and ranking performance (ROC-AUC of 0.962), yet the Neural Network offers 
+  superior sensitivity to critical minority attacks, achieving a U2R recall of 0.70. 
+  However, the substantial performance drop between validation and test sets highlights 
+  that model expressiveness alone cannot overcome the inherent limitations of imbalanced 
+  training data. We conclude that while Random Forest offers the most practical balance 
+  for general detection, robust multi-class intrusion detection requires data-centric 
+  strategies like hierarchical pipelines and anomaly-aware learning to effectively 
+  identify rare, high-risk security threats.
+
+\end{abstract}
+
+% If there are only a few figures and tables, it is better to use the following:
+\listoffiguresandtables
+
+
+% Now comes the main text
+\mainmatter
+
+\include{intro}
+\include{methods}
+\include{results}
+% ... and so on until
+\include{discussion}
+\include{conclusion}
+
+
+% The bibliography comes after the appendices.
+% You can replace the standard "abbrv" bibliography style by another one.
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}
