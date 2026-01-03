@@ -1,9 +1,13 @@
 \chapter{Results}
 \label{sec:results}
 
-This section presents the experimental results obtained for the three evaluated model families: Logistic Regression (LR), Random Forest (RF), and Neural Networks (NN). Results are reported for both binary intrusion detection (Normal vs. Attack) and multi-class attack-category classification (Normal, DoS, Probe, R2L, U2R).
+This section presents the experimental results obtained for the three evaluated model families: Logistic Regression (LR), Random Forest (RF), and Neural Networks (NN). 
+Results are reported for both binary intrusion detection (Normal vs. Attack) and multi-class attack-category classification (Normal, DoS, Probe, R2L, U2R).
 
-All models are trained using identical training, validation, and test splits, as described in Section \ref{sec:models}. Validation performance is used exclusively for model selection and hyperparameter refinement, while test-set results are used for final evaluation and comparison. Performance is assessed using accuracy, macro-averaged precision, recall, and F1-score. For binary classification, ROC curves and AUC values are additionally reported. Macro-averaged metrics are emphasized due to the severe class imbalance present in the NSL-KDD dataset.
+All models are trained using identical training, validation, and test splits, as described in Section \ref{sec:models}. Validation performance is used exclusively for 
+model selection and hyperparameter refinement, while test-set results are used for final evaluation and comparison. Performance is assessed using accuracy, macro-averaged 
+precision, recall, and F1-score. For binary classification, ROC curves and AUC values are additionally reported. Macro-averaged metrics are emphasized due to the severe class 
+imbalance present in the NSL-KDD dataset.
 
 \section{Binary Classification Results}
 
@@ -23,49 +27,66 @@ Neural Network      & 0.778 & 0.800 & 0.780 & 0.940 \\
 \end{tabular}
 \end{table}
 
+\pagebreak
 \subsection{Logistic Regression}
-Logistic Regression is evaluated as a linear baseline for binary intrusion detection (normal vs. intrusive traffic). On the test set, the model achieves an accuracy of 0.754 and a macro-averaged F1-score of 0.753, with a ROC--AUC of 0.896. Class-specific recall is 0.933 for normal traffic and 0.619 for attack traffic, indicating strong detection of normal connections but reduced sensitivity to intrusive instances. Figure \ref{fig:binary_lr_cm} shows the normalized confusion matrix for the binary Logistic Regression model on the test set.
+Logistic Regression is evaluated as a linear baseline for binary intrusion detection (normal vs. intrusive traffic). On the test set, the model achieves an accuracy 
+of 0.754 and a macro-averaged F1-score of 0.753, with a ROC--AUC of 0.896. Class-specific recall is 0.933 for normal traffic and 0.619 for attack traffic, indicating 
+strong detection of normal connections but reduced sensitivity to intrusive instances. Figure \ref{fig:binary_lr_cm} shows the normalized confusion matrix for the binary 
+Logistic Regression model on the test set.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/conf_bin_lr.png}
+    \includegraphics[width=0.45\textwidth]{images/conf_bin_lr.png}
     \caption{Normalized confusion matrix for binary Logistic Regression}
     \label{fig:binary_lr_cm}
 \end{figure}
 \FloatBarrier
 
-In addition to the fixed train/validation/test evaluation, stratified 5-fold cross-validation is performed for the binary Logistic Regression baseline. Across folds, the model achieves a mean accuracy of $0.954 \pm 0.001$ and a mean macro-averaged F1-score of $0.950 \pm 0.001$, indicating stable performance across different training subsets under class imbalance.
+In addition to the fixed train/validation/test evaluation, stratified 5-fold cross-validation is performed for the binary Logistic Regression baseline. Across folds, 
+the model achieves a mean accuracy of $0.954 \pm 0.001$ and a mean macro-averaged F1-score of $0.950 \pm 0.001$, indicating stable performance across different training 
+subsets under class imbalance.
 
+\pagebreak
 \subsection{Random Forest}
-The Random Forest classifier is evaluated using a reduced feature representation consisting of the top-20 features selected via Random Forest feature-importance scores, as described in Section \ref{sec:models}. This feature subset is used consistently across both binary and multi-class Random Forest experiments. On the binary test set, Random Forest achieves an accuracy of 0.752 and a macro-averaged F1-score of 0.750. Recall is 0.972 for normal traffic and 0.585 for attack traffic. The ROC--AUC on the test set is 0.962. Figure \ref{fig:binary_rf_cm} presents the normalized confusion matrix for the binary Random Forest classifier on the test set.
+The Random Forest classifier is evaluated using a reduced feature representation consisting of the top-20 features selected via Random Forest feature-importance scores, 
+as described in Section \ref{sec:models}. This feature subset is used consistently across both binary and multi-class Random Forest experiments. On the binary test set, 
+Random Forest achieves an accuracy of 0.752 and a macro-averaged F1-score of 0.750. Recall is 0.972 for normal traffic and 0.585 for attack traffic. The ROC--AUC on the 
+test set is 0.962. Figure \ref{fig:binary_rf_cm} presents the normalized confusion matrix for the binary Random Forest classifier on the test set.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/conf_bin_rf.png} 
+    \includegraphics[width=0.45\textwidth]{images/conf_bin_rf.png} 
     \caption{Normalized confusion matrix for binary Random Forest}
     \label{fig:binary_rf_cm}
 \end{figure}
 \FloatBarrier
 
-\subsection{Neural Networks}
-Although neural networks are not always necessary or consistently superior to classical machine-learning techniques on intrusion-detection datasets, their ability to learn higher-order feature interactions makes them a valuable comparison point. Neural networks are therefore introduced as a third modeling family to assess whether their greater representational capacity provides advantages beyond linear and tree-based methods. On the binary test set, the Neural Network achieves an accuracy of 0.778 and a macro-averaged F1-score of 0.780, with a ROC--AUC of 0.940. Class-specific recall is 0.925 for normal traffic and 0.675 for attack traffic. Figure \ref{fig:binary_nn_cm} shows the normalized confusion matrix for the binary Neural Network on the test set.
+\pagebreak
+\subsection{Neural Network}
+Although neural networks are not always necessary or consistently superior to classical machine-learning techniques on intrusion-detection datasets, their ability to 
+learn higher-order feature interactions makes them a valuable comparison point. Neural networks are therefore introduced as a third modeling family to assess whether 
+their greater representational capacity provides advantages beyond linear and tree-based methods. On the binary test set, the Neural Network achieves an accuracy of 
+0.778 and a macro-averaged F1-score of 0.780, with a ROC--AUC of 0.940. Class-specific recall is 0.925 for normal traffic and 0.675 for attack traffic. 
+Figure \ref{fig:binary_nn_cm} shows the normalized confusion matrix for the binary Neural Network on the test set.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/conf_bin_nn.png}
+    \includegraphics[width=0.45\textwidth]{images/conf_bin_nn.png}
     \caption{Normalized confusion matrix for binary Neural Network}
     \label{fig:binary_nn_cm}
 \end{figure}
 \FloatBarrier
-\vspace{-1.5em}
+\vspace{1.5em}
 
-Figure \ref{fig:roc_all} compares the ROC curves of Logistic Regression, Random Forest, and Neural Network models on the binary test set, illustrating differences in discrimination performance across decision thresholds.
+
+Figure \ref{fig:roc_all} compares the ROC curves of Logistic Regression, Random Forest, and Neural Network models on the binary test set, illustrating differences 
+in discrimination performance across decision thresholds.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{images/roc_comb.png}
     \caption{ROC curves for binary intrusion detection on test set}
     \label{fig:roc_all}
 \end{figure}
-\FloatBarrier
-\vspace{-1.5em}
 
+\pagebreak
 \section{Multi-class Classification Results}
 
 Table 2 summarizes the multi-class classification performance of all models on the test set. 
@@ -86,35 +107,43 @@ Neural Net. & 0.792 & 0.681 & 0.580 & 0.770 & 0.13 / 0.70 & 0.68 \\
 \end{tabularx}
 \end{table}
 
-
-In the multi-class One-vs-Rest configuration, Logistic Regression achieves a test accuracy of 0. 753 and a macro-averaged F1-score of 0. 678. Performance varies substantially across attack categories, with higher recall for dominant classes (Normal, DoS, Probe) and reduced performance for the rare R2L and U2R classes. Figure \ref{fig:multiclass_lr_cm} shows the normalized multi-class confusion matrix for the Logistic Regression model on the test set.
+\subsection{Logistic Regression}
+In the multi-class One-vs-Rest configuration, Logistic Regression achieves a test accuracy of 0. 753 and a macro-averaged F1-score of 0. 678. 
+Performance varies substantially across attack categories, with higher recall for dominant classes (Normal, DoS, Probe) and reduced performance 
+for the rare R2L and U2R classes. Figure \ref{fig:multiclass_lr_cm} shows the normalized multi-class confusion matrix for the Logistic Regression model on the test set.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/conf_mc_lr.png}
+    \includegraphics[width=0.45\textwidth]{images/conf_mc_lr.png}
     \caption{Confusion matrix for multi-class Logistic Regression on the test set}
     \label{fig:multiclass_lr_cm}
 \end{figure}
 \FloatBarrier
-\vspace{-1.5em}
 
-In the multi-class setting, Random Forest is trained and evaluated using the same top-20 feature subset as in the binary task. On the test set, the classifier achieves an accuracy of 0.736, a macro-averaged F1-score of 0.474, and a weighted F1-score of 0.688. Figure \ref{fig:multiclass_rf_cm} presents the normalized multi-class confusion matrix for the Random Forest classifier on the test set.
+\pagebreak
+\subsection{Random Forest}
+In the multi-class setting, Random Forest is trained and evaluated using the same top-20 feature subset as in the binary task. On the test set, 
+the classifier achieves an accuracy of 0.736, a macro-averaged F1-score of 0.474, and a weighted F1-score of 0.688. Figure \ref{fig:multiclass_rf_cm} 
+presents the normalized multi-class confusion matrix for the Random Forest classifier on the test set.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/conf_mc_rf.png}
+    \includegraphics[width=0.45\textwidth]{images/conf_mc_rf.png}
     \caption{Confusion matrix for multi-class Random Forest on the test set}
     \label{fig:multiclass_rf_cm}
 \end{figure}
 \FloatBarrier
 \vspace{-1.5em}
 
-For the multi-class classification task, the Neural Network is evaluated using the same experimental protocol as the other models. The reported configuration corresponds to the model selected based on validation performance and evaluated on the test set.  
-On the test set, the model achieves an accuracy of 0.792, a macro-averaged recall of 0.681, and a macro-averaged F1-score of 0.580, with a weighted F1-score of 0.770. Figure \ref{fig:multiclass_nn_cm} presents the normalized multi-class confusion matrix for the Neural Network on the test set.
+\subsection{Neural Network}
+For the multi-class classification task, the Neural Network is evaluated using the same experimental protocol as the other models. The reported 
+configuration corresponds to the model selected based on validation performance and evaluated on the test set.  
+On the test set, the model achieves an accuracy of 0.792, a macro-averaged recall of 0.681, and a macro-averaged F1-score of 0.580, with a weighted 
+F1-score of 0.770. Figure \ref{fig:multiclass_nn_cm} presents the normalized multi-class confusion matrix for the Neural Network on the test set.
+
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/conf_mc_rf.png}
+    \includegraphics[width=0.45\textwidth]{images/conf_mc_rf.png}
     \caption{Confusion matrix for multi-class Neural Network on the test set}
     \label{fig:multiclass_nn_cm}
 \end{figure}
 \FloatBarrier
-\vspace{-1.5em}

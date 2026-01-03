@@ -5,19 +5,9 @@
   promotor={Prof.\,dr.\,ir.\ Knows Better},
   assessor={Ir.\,Kn. Owsmuch\and K. Nowsrest},
   assistant={Diwas Lamsal}}
-% Remove the "%" on the next line for generating the cover page
-%\setup{coverpageonly}
-% Remove the "%" before the next "\setup" to generate only the first pages
-% (e.g., if you are a Word user).
-%\setup{frontpagesonly}
 
-% If you want to include other LaTeX packages, do it here. 
-
-% Finally the hyperref package is used for pdf files.
-% This can be commented out for printed versions.
-
-\usepackage[table]{xcolor} % 'table'optie is handig voor cell backgrounds
-\usepackage{xltabular}    % combinatie van longtable + tabularx
+\usepackage[table]{xcolor}
+\usepackage{xltabular}
 \usepackage[table]{xcolor}
 \usepackage{enumitem}
 \usepackage{xltabular,enumitem} 
@@ -25,9 +15,8 @@
 \usepackage{pdflscape}
 \usepackage{placeins}
 \usepackage{longtable}
-\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
-%%%%%%%
-%\includeonly{chapter-n}
+\usepackage[pdfusetitle,colorlinks,plainpages=false,hidelinks]{hyperref}
+
 \begin{document}
 
 \tableofcontents*
@@ -55,23 +44,16 @@
 
 \end{abstract}
 
-% If there are only a few figures and tables, it is better to use the following:
 \listoffiguresandtables
 
-
-% Now comes the main text
 \mainmatter
 
 \include{intro}
 \include{methods}
 \include{results}
-% ... and so on until
 \include{discussion}
 \include{conclusion}
 
-
-% The bibliography comes after the appendices.
-% You can replace the standard "abbrv" bibliography style by another one.
 \bibliographystyle{ieeetr}
 \bibliography{references}
 
