@@ -13,8 +13,8 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Normalized confusion matrix for binary Random Forest}}{11}{figure.3.2}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Normalized confusion matrix for binary Neural Network}}{12}{figure.3.3}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces ROC curves for binary intrusion detection on test set}}{12}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Confusion matrix for multi-class Logistic Regression on the test set}}{13}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Confusion matrix for multi-class Random Forest on the test set}}{14}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Confusion matrix for multi-class Neural Network on the test set}}{14}{figure.3.7}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Normalized confusion matrix for multi-class Logistic Regression}}{13}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Normalized confusion matrix for multi-class Random Forest}}{14}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Normalized confusion matrix for multi-class Neural Network}}{14}{figure.3.7}%
 \addvspace {10pt}
 \addvspace {10pt}

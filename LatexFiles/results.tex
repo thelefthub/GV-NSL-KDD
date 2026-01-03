@@ -94,31 +94,30 @@ Table \ref{tab:multiclass_recall} summarizes the recall per class on the testset
 
 \begin{table}[htbp]
 \centering
-\caption{Multi-class classification performance on the test set.}
+\caption{Multi-class classification performance (General) on the test set.}
 \label{tab:multiclass_results}
-\small
-\begin{tabularx}{\textwidth}{l@{\extracolsep{\fill}}cccccc}
+\begin{tabular}{lcccc}
 \toprule
-Model & Acc. & Macro Rec. & Macro $F_1$ & Wtd. $F_1$ & R2L/U2R Rec. & Atk. Rec. \\
+Model & Accuracy & Macro Recall & Macro $F_1$ & Weighted $F_1$ \\
 \midrule
-Log. Reg. & 0.753 & 0.687 & 0.678 & 0.742 & 0.45 / 0.57 & 0.74 \\
-Rand. Forest & 0.736 & 0.472 & 0.474 & 0.688 & 0.002 / 0.030 & 0.49 \\
-Neural Net. & 0.792 & 0.681 & 0.580 & 0.770 & 0.13 / 0.70 & 0.68 \\
+Logistic Regression & 0.753 & 0.687 & 0.678 & 0.742 \\
+Random Forest & 0.736 & 0.472 & 0.474 & 0.688 \\
+Neural Network & 0.792 & 0.681 & 0.580 & 0.770 \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 \centering
 \caption{Multi-class classification performance (Recall per class) on the test set.}
 \label{tab:multiclass_recall}
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccccc}
 \toprule
-Model & Normal & DoS & Probe & R2L & U2R \\
+Model & Normal & DoS & Probe & R2L & U2R & Attack Recall\\
 \midrule
-Logistic Regression & 0.948 & 0.571 & 0.898 & 0.452 & 0.567 \\
-Random Forest       & 0.972 & 0.766 & 0.589 & 0.002 & 0.030 \\
-Neural Network      & 0.961 & 0.850 & 0.753 & 0.134 & 0.702 \\
+Logistic Regression & 0.948 & 0.571 & 0.898 & 0.452 & 0.567 & 0.74\\
+Random Forest       & 0.972 & 0.766 & 0.589 & 0.002 & 0.030  & 0.49\\
+Neural Network      & 0.961 & 0.850 & 0.753 & 0.134 & 0.702 & 0.68\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -131,7 +130,7 @@ for the rare R2L and U2R classes. Figure \ref{fig:multiclass_lr_cm} shows the no
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{images/conf_mc_lr.png}
-    \caption{Confusion matrix for multi-class Logistic Regression on the test set}
+    \caption{Normalized confusion matrix for multi-class Logistic Regression}
     \label{fig:multiclass_lr_cm}
 \end{figure}
 \FloatBarrier
@@ -144,7 +143,7 @@ presents the normalized multi-class confusion matrix for the Random Forest class
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{images/conf_mc_rf.png}
-    \caption{Confusion matrix for multi-class Random Forest on the test set}
+    \caption{Normalized confusion matrix for multi-class Random Forest}
     \label{fig:multiclass_rf_cm}
 \end{figure}
 \FloatBarrier
@@ -159,7 +158,7 @@ F1-score of 0.770. Figure \ref{fig:multiclass_nn_cm} presents the normalized mul
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{images/conf_mc_rf.png}
-    \caption{Confusion matrix for multi-class Neural Network on the test set}
+    \caption{Normalized confusion matrix for multi-class Neural Network}
     \label{fig:multiclass_nn_cm}
 \end{figure}
 \FloatBarrier
