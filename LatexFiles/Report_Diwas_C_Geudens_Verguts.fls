@@ -295,10 +295,13 @@ INPUT .\images\conf_mc_rf.png
 INPUT .\images\conf_mc_rf.png
 INPUT .\images\conf_mc_rf.png
 INPUT .\images\conf_mc_rf.png
-INPUT .\images\conf_mc_rf.png
-INPUT .\images\conf_mc_rf.png
-INPUT .\images\conf_mc_rf.png
-INPUT .\images\conf_mc_rf.png
+INPUT .\images\conf_mc_nn.png
+INPUT .\images\conf_mc_nn.png
+INPUT .\images\conf_mc_nn.png
+INPUT .\images\conf_mc_nn.png
+INPUT .\images\conf_mc_nn.png
+INPUT .\images\conf_mc_nn.png
+INPUT .\images\conf_mc_nn.png
 INPUT .\discussion.tex
 INPUT .\discussion.tex
 OUTPUT discussion.aux
