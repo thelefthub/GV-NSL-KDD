@@ -7,7 +7,8 @@ Results are reported for both binary intrusion detection (Normal vs. Attack) and
 All models are trained using identical training, validation, and test splits, as described in Section \ref{sec:models}. Validation performance is used exclusively for 
 model selection and hyperparameter refinement, while test-set results are used for final evaluation and comparison. Performance is assessed using accuracy, macro-averaged 
 precision, recall, and F1-score. For binary classification, ROC curves and AUC values are additionally reported. Macro-averaged metrics are emphasized due to the severe class 
-imbalance present in the NSL-KDD dataset.
+imbalance present in the NSL-KDD dataset. In addition, attack-only macro recall is reported to more directly assess detection performance across attack categories.
+Minor numerical differences may occur across runs due to stochastic effects in training and evaluation. All metrics are therefore reported to three decimal places.
 
 \section{Binary Classification Results}
 
@@ -123,7 +124,7 @@ Neural Network      & 0.961 & 0.850 & 0.753 & 0.134 & 0.702 & 0.68\\
 \end{table}
 
 \subsection{Logistic Regression}
-In the multi-class One-vs-Rest configuration, Logistic Regression achieves a test accuracy of 0. 753 and a macro-averaged F1-score of 0. 678. 
+In the multi-class One-vs-Rest configuration, Logistic Regression achieves a test accuracy of 0.753 and a macro-averaged F1-score of 0.678. 
 Performance varies substantially across attack categories, with higher recall for dominant classes (Normal, DoS, Probe) and reduced performance 
 for the rare R2L and U2R classes. Figure \ref{fig:multiclass_lr_cm} shows the normalized multi-class confusion matrix for the Logistic Regression model on the test set.
 

@@ -27,20 +27,18 @@
   using the NSL-KDD benchmark dataset. Motivated by the increasing complexity of cyber threats 
   and recent high-profile breaches, the research compares linear, ensemble-based, 
   and non-linear approaches in both binary and multi-class classification scenarios. 
-  Utilizing a unified preprocessing pipeline and addressing severe class imbalance through 
-  class-weighted learning and decision-threshold optimization, the project analyzes model performance 
-  beyond aggregate accuracy, with a specific focus on rare attack categories like 
-  User-to-Root (U2R) and Remote-to-Local (R2L). Key results indicate that while all 
+  By employing a unified preprocessing pipeline and addressing severe class imbalance through class-weighted learning, 
+  the project evaluates model performance beyond overall accuracy, with particular focus on
+  rare attack categories such as User-to-Root (U2R) and Remote-to-Local (R2L). Key results indicate that, while all 
   models achieve high binary accuracy (up to 77.8\%), their ability to generalize to 
   unseen attack patterns in the test set varies significantly. Random Forest provides the 
   best stability and ranking performance (ROC-AUC of 0.962), yet the Neural Network offers 
   superior sensitivity to critical minority attacks, achieving a U2R recall of 0.70. 
   However, the substantial performance drop between validation and test sets highlights 
   that model expressiveness alone cannot overcome the inherent limitations of imbalanced 
-  training data. We conclude that while Random Forest offers the most practical balance 
-  for general detection, robust multi-class intrusion detection requires data-centric 
-  strategies like hierarchical pipelines and anomaly-aware learning to effectively 
-  identify rare, high-risk security threats. 
+  training data. We conclude that, while Random Forest offers the most practical balance for general detection,
+   effective multi-class intrusion detection depends on data-centric strategies, including hierarchical pipelines and
+    anomaly-aware learning, to identify rare, high-risk security threats. 
 
 \end{abstract}
 

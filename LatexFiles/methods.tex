@@ -2,19 +2,15 @@
 \label{cha:1}
 
 \section{Dataset and Features}
-This project uses the NSL-KDD dataset, a publicly available benchmark dataset for intrusion detection research \cite{tavallaee2009detailed}. 
-NSL-KDD was introduced by Tavallaee et al. as a cleaned and improved version of the original KDD Cup 1999 dataset, addressing major shortcomings 
-such as redundant records and biased attack distributions that previously led to overly optimistic detection results. The dataset is freely accessible 
-via Kaggle and is widely used for evaluating and comparing machine-learning-based intrusion detection systems \cite{abrar2020machine}. 
-The purpose of the NSL-KDD dataset is to support supervised classification of network traffic into normal and malicious behavior. 
+This project uses the NSL-KDD dataset, a publicly available benchmark for intrusion detection research. The NSL-KDD dataset was introduced by Tavallaee et al. \cite{tavallaee2009detailed} as a cleaned and improved version of the original KDD Cup 1999 dataset, addressing major shortcomings such as redundant records and biased attack distributions that previously led to overly optimistic detection results. The dataset is freely accessible through a public Kaggle repository \cite{kaggleNSLKDD} and is widely used for evaluating and comparing machine-learning-based intrusion detection systems \cite{abrar2020machine}. The primary purpose of the NSL-KDD dataset is to support supervised classification of network traffic into normal and malicious behavior. 
 Each data instance represents a single network connection and is described by a fixed set of features capturing various aspects of network activity. 
 The classification task can be formulated either as binary classification (normal vs. attack) or as multi-class classification, where attacks are grouped into four main categories: 
-Denial of Service (DoS), Probe, Remote-to-Local (R2L), and User-to-Root (U2R), in addition to the Normal class \cite{hegde2024intrusion}.
+Denial of Service (DoS), Probe, Remote-to-Local (R2L), and User-to-Root (U2R), in addition to the Normal class.
 
 The dataset consists of 125,973 samples in the training set (KDDTrain+) and 22,544 samples in the test set (KDDTest+), for a total of five classes. 
 The class distribution is highly imbalanced, with DoS attacks dominating the dataset, while R2L and especially U2R attacks are extremely rare. 
 This imbalance reflects realistic attack distributions but also introduces challenges for model training and evaluation, particularly in the multi-class setting \cite{hong2021machine}.
- Each network connection is described by 41 features, composed of a mix of numeric, categorical, and binary attributes \cite{tavallaee2009detailed}. 
+ Each network connection is described by 41 features, composed of a mix of numeric, categorical, and binary attributes. 
  These include basic connection features (e.g., duration, protocol type, service, flag), content-based features (e.g., number of failed login attempts, file creation counts), 
  and traffic-based features computed over time windows (e.g., connection counts, error rates, and bytes sent or received) \cite{tavallaee2009detailed}. 
  The raw data is stored in text (.txt) format, with each row corresponding to a single connection record.
@@ -34,8 +30,7 @@ Probe and R2L attacks increase substantially in the test split. This shift refle
 that are absent or under-represented during training in order to evaluate generalization to previously unseen intrusions \cite{tavallaee2009detailed}. This imbalance and distribution 
 shift have two important implications. First, accuracy alone is a misleading evaluation metric, as strong performance on majority classes can mask poor detection of rare but 
 security-critical attack types such as R2L and U2R. Second, models trained on the imbalanced training data are inherently biased toward dominant classes, making generalization 
-to the test set more challenging. Consequently, the experimental evaluation emphasizes macro-averaged metrics, minority-class recall, and confusion-matrix analysis, and motivates 
-the use of class-weighted learning and more expressive, non-linear models.
+to the test set more challenging. Consequently, the experimental evaluation focuses on macro-averaged metrics, minority-class (or attack-only) recall, and confusion-matrix analysis, which in turn motivates the use of class-weighted learning and more expressive, non-linear models.
 
 Prior to model training, several preprocessing and feature engineering steps are applied. Categorical features, including \texttt{protocol\_type}, \texttt{service}, 
 and \texttt{flag}, are transformed using one-hot encoding, treating categories as nominal variables without imposing an artificial ordinal structure. Continuous features 
@@ -52,11 +47,11 @@ affects training efficiency for the Logistic Regression implementation due to th
 training proceed under the same feature representation without requiring separate preprocessing variants.
 
 For model evaluation, the official \texttt{KDDTrain+} dataset is split into training and validation subsets, with the training subset used for parameter estimation and the 
-validation subset used for model selection. The official \texttt{KDDTest+} dataset is reserved exclusively for final evaluation. Notably, the test set contains attack types 
+validation subset used for model selection. The official \texttt{KDDTest+} dataset is reserved exclusively for final evaluation. By design, the test set contains attack types 
 that are absent from the training data, providing a challenging benchmark for assessing generalization to previously unseen attacks \cite{tavallaee2009detailed}. 
 Strict separation between training, validation, and test sets is applied for all models to obtain an unbiased estimate of model performance. Finally, while the preprocessing 
 pipeline could be made fully reproducible by persisting fitted encoders and scalers using tools such as \texttt{joblib}, this project prioritizes conceptual clarity over 
-production-level delivery. As a result, some best practices, such as persistent transformers, configuration files, and extensive exception handling, are omitted. 
+production-level delivery. As a result, some best practices, such as persistent transformers, configuration files, and extensive exception handling, are not implemented. 
 In a real-world deployment scenario, need for robustness, maintainability, and reproducibility would be essential components of the data-processing workflow.
 
 \section{Models}
@@ -71,7 +66,7 @@ present in NSL-KDD \cite{abrar2020machine, tavallaee2009detailed}. In addition t
 (i.e. excluding Normal class) to better reflect performance across attack categories. This avoids the metric being dominated by the comparatively easy Normal class and provides a 
 clearer view of attack-type sensitivity under class imbalance. No automated hyperparameter search (e.g. grid search or random search) was performed. Instead, model and training 
 hyperparameters were selected through iterative, validation-driven refinement: candidate settings were chosen based on standard defaults and prior literature, then adjusted using 
-validation-set performance and training diagnostics. This approach maintains methodological transparency while keeping the experimental scope aligned with the project constraints.
+validation-set performance and training diagnostics. This approach ensures methodological transparency while keeping the experimental scope aligned with the comparative nature of the project.
 
 \subsection{Logistic Regression}
 Logistic Regression serves as the baseline model and is directly adapted from the course lab assignments. Its primary objectives are to establish a transparent reference point, 
@@ -85,27 +80,19 @@ The original lab implementation was extended in two important ways. First, class
 sample-weight term. This allows training errors on minority classes to be penalized more heavily, partially compensating for the severe imbalance between frequent attacks 
 (e.g., DoS) and rare categories (e.g., R2L and U2R). This approach is widely used to mitigate class imbalance in intrusion detection, where rare attack categories would otherwise 
 have negligible influence on the loss function \cite{abrar2020machine, hong2021machine}. Second, multi-class support was added using a One-vs-Rest (OvR) strategy, 
-a standard extension of binary classifiers for multi-class intrusion detection tasks \cite{hegde2024intrusion}. For a problem with $K$ classes, OvR trains $K$ independent 
-binary classifiers, each distinguishing one class from all others. During inference, all classifiers are evaluated and the class associated with the highest logit value is selected. 
-Stratified k-fold cross-validation was applied only for the binary Logistic Regression baseline to assess robustness under class imbalance. For Random Forest and 
-Neural Network models, evaluation relied on the fixed train/validation split for model selection and the held-out test set for final assessment.
+a standard extension of binary classifiers for multi-class intrusion detection tasks. For a problem with $K$ classes, OvR trains $K$ independent 
+binary classifiers, each distinguishing one class from all others. During inference, all classifiers are evaluated and the class associated with the highest logit value is selected. Stratified k-fold cross-validation was applied only for the binary Logistic Regression baseline to assess robustness under class imbalance. Logistic Regression was selected for this analysis due to its role as a baseline model. Random Forest and Neural Network models use a fixed train/validation split for model selection and the held-out test set for final evaluation.
 
-Evaluation of Logistic Regression is performed on a validation set using accuracy and macro-F1 as primary metrics. For the binary formulation, ROC curves and AUC scores are computed 
-using the predicted probabilities from the sigmoid output, as commonly reported in prior NSL-KDD studies \cite{abrar2020machine, hong2021machine}. In addition, stratified 
-k-fold cross-validation is applied in the binary setting to assess robustness across different data partitions while preserving class proportions. In the multi-class setting, 
-raw (non-normalized) confusion matrices are used to analyze absolute error patterns, and top-k accuracy is computed to assess ranking behavior across class logits.
+Evaluation of the Logistic Regression model is conducted on a validation set using accuracy and macro-F1 as initial validation metrics, while class-wise recall and confusion-matrix analysis are emphasized in the final evaluation to account for class imbalance. For the binary formulation, ROC curves and AUC scores are computed from the predicted probabilities produced by the sigmoid output, as commonly reported in prior NSL-KDD studies \cite{tavallaee2009detailed, ali2025deep}. In the multi-class setting, normalized confusion matrices are used to analyze absolute error patterns. Furthermore, attack-only macro recall (i.e. excluding the Normal class) is reported to better reflect detection performance across attack categories.
 \pagebreak
 \subsection{Random Forest}
-Random Forest (RF) is selected as the primary non-linear model due to its strong empirical performance on NSL-KDD and to its ability to model complex feature interactions, 
-handle mixed feature types, and reduce overfitting through ensemble averaging \cite{abrar2020machine, hegde2024intrusion, hong2021machine}. A Random Forest consists of 
-an ensemble of decision trees trained on bootstrapped samples of the data, where each split considers only a random subset of features. Final predictions are obtained by 
-majority voting across trees. 
+Random Forest (RF) is chosen as the primary non-linear model because of its strong performance on NSL-KDD and its ability to capture complex feature interactions \cite{abrar2020machine, hegde2024intrusion, hong2021machine}. It handles mixed feature types and reduces overfitting through ensemble averaging. A Random Forest is an ensemble of decision trees trained on bootstrapped data samples, where each split uses a random subset of features. Final predictions are produced by majority voting across the trees. 
 
 
 
 The objectives of the Random Forest model are to improve multi-class detection performance relative to linear models, identify informative features, and build a more 
 expressive classifier without excessive overfitting. RF is deliberately used in two distinct stages. In the first stage, an RF model is trained on the full 41-feature 
-dataset to compute feature importance scores, a commonly used technique for feature ranking in intrusion detection \cite{hegde2024intrusion, hong2021machine}. 
+dataset to compute feature importance scores, a commonly used technique for feature ranking in intrusion detection. 
 This model is used exclusively for feature ranking and not for final prediction. Based on these rankings, a reduced subset of the most informative features is selected. 
 In the second stage, a new RF model is trained solely on this reduced feature set to serve as the predictive classifier. This two-stage approach enables an explicit evaluation of 
 feature selection effects while maintaining a consistent learning algorithm. Class imbalance is addressed using class-weighted splitting criteria, as recommended in ensemble-based 

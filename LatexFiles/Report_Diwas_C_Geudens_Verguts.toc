@@ -3,8 +3,8 @@
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Abstract}{ii}{chapter*.3}%
-\contentsline {chapter}{List of Figures and Tables}{iii}{chapter*.5}%
+\contentsline {chapter}{Abstract}{ii}{chapter*.2}%
+\contentsline {chapter}{List of Figures and Tables}{iii}{chapter*.3}%
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Methods}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Dataset and Features}{3}{section.2.1}%
@@ -28,4 +28,4 @@
 \contentsline {section}{\numberline {4.4}Updates based on the poster presentation feedbacks}{18}{section.4.4}%
 \contentsline {chapter}{\chapternumberline {5}Conclusion}{19}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Contributions}{19}{section.5.1}%
-\contentsline {chapter}{Bibliography}{20}{chapter*.11}%
+\contentsline {chapter}{Bibliography}{20}{chapter*.8}%

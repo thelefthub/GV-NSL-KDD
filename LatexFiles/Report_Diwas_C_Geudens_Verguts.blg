@@ -1,50 +1,47 @@
-This is BibTeX, Version 0.99e
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Report_Diwas_C_Geudens_Verguts.aux
-Reallocating 'name_of_file' (item size: 1) to 10 items.
 A level-1 auxiliary file: intro.aux
-Reallocating 'name_of_file' (item size: 1) to 12 items.
 A level-1 auxiliary file: methods.aux
-Reallocating 'name_of_file' (item size: 1) to 12 items.
 A level-1 auxiliary file: results.aux
-Reallocating 'name_of_file' (item size: 1) to 15 items.
 A level-1 auxiliary file: discussion.aux
-Reallocating 'name_of_file' (item size: 1) to 15 items.
 A level-1 auxiliary file: conclusion.aux
-Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
-Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
-You've used 7 entries,
+Warning--entry type for "pkware2024breaches" isn't style-file defined
+--line 68 of file references.bib
+Warning--entry type for "kaggleNSLKDD" isn't style-file defined
+--line 76 of file references.bib
+You've used 9 entries,
             1876 wiz_defined-function locations,
-            526 strings with 5275 characters,
-and the built_in function-call counts, 2131 in all, are:
-= -- 203
-> -- 86
+            535 strings with 5544 characters,
+and the built_in function-call counts, 2381 in all, are:
+= -- 225
+> -- 94
 < -- 0
-+ -- 31
-- -- 24
-* -- 154
-:= -- 297
-add.period$ -- 7
-call.type$ -- 7
-change.case$ -- 7
++ -- 35
+- -- 26
+* -- 164
+:= -- 333
+add.period$ -- 9
+call.type$ -- 9
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 119
-empty$ -- 206
-format.name$ -- 24
-if$ -- 519
+cite$ -- 9
+duplicate$ -- 127
+empty$ -- 242
+format.name$ -- 26
+if$ -- 583
 int.to.chr$ -- 0
-int.to.str$ -- 7
+int.to.str$ -- 9
 missing$ -- 7
-newline$ -- 24
-num.names$ -- 7
-pop$ -- 33
+newline$ -- 30
+num.names$ -- 9
+pop$ -- 45
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 77
+skip$ -- 85
 stack$ -- 0
 substring$ -- 136
 swap$ -- 47
@@ -53,6 +50,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 23
-width$ -- 8
-write$ -- 70
+while$ -- 25
+width$ -- 10
+write$ -- 86
+(There were 2 warnings)

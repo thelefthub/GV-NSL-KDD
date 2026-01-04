@@ -5,11 +5,10 @@ This project compared Logistic Regression, Random Forest, and Neural Network mod
 While detailed performance metrics are reported only for the held-out test set, an important observation across all models is the substantial drop in performance from validation to 
 test data, indicating limited generalization to unseen traffic patterns. Across all models, performance on the official NSL-KDD test set is notably lower than on the validation split, 
 indicating limited generalization to unseen traffic patterns. This gap is expected, as the test set deliberately includes attack types and distributions that are under-represented or 
-absent during training. Higher-capacity models, particularly Random Forest and Neural Networks, exhibit a larger relative drop in performance, suggesting that strong validation 
+absent during training. Higher-capacity models, particularly Random Forest and Neural Networks, show a larger relative drop in performance, suggesting that strong validation 
 results do not necessarily translate into robust test-set performance.
 
-In the binary intrusion-detection task, all models achieve high overall accuracy and favorable ROC characteristics on the test set. However, from a security perspective, false 
-negatives, attacks that are incorrectly classified as normal traffic, represent the most critical failure mode, as they correspond to undetected intrusions. Analysis of the 
+In the binary intrusion-detection task, all models achieve relatively high overall accuracy and favorable ROC characteristics on the test set. However, from a security perspective, false negatives are the most critical errors. They correspond to attacks that are incorrectly classified as normal traffic and remain undetected. Analysis of the 
 confusion matrices and class-specific recall shows that Logistic Regression produces the highest number of false negatives among the evaluated models, reflecting a conservative 
 decision boundary that prioritizes correct classification of normal traffic. Random Forest reduces the number of false negatives relative to Logistic Regression but still 
 misclassifies a non-negligible fraction of attacks as normal, despite strong ROC--AUC values. The Neural Network achieves the lowest false-negative rate and the highest recall 
@@ -38,8 +37,7 @@ This trade-off explains why macro-averaged $F_{1}$-scores remain considerably lo
 
 Overall, these findings indicate that multi-class intrusion detection on NSL-KDD is constrained less by model choice than by data characteristics. Aggregate metrics 
 obscure critical weaknesses in attack detection, while class-sensitive measures reveal that rare attacks remain difficult to identify. The results suggest that future 
-improvements are more likely to arise from data-centric strategies, such as hierarchical detection pipelines, targeted resampling, or anomaly-based modeling, than from 
-increased model complexity alone.
+improvements are more likely to come from data-centric strategies, such as hierarchical detection pipelines, selective resampling of minority attack classes, or anomaly-based modeling, rather than from increased model complexity alone.
 
 In the binary neural network setting, the default decision threshold of $0.5$ was not assumed a priori. Instead, decision thresholds were analyzed using validation-set 
 precision--recall characteristics, and the threshold yielding the best macro-averaged $F_{1}$-score on the validation set was selected for final evaluation. With the 
@@ -51,8 +49,7 @@ The results obtained in this study are consistent with established findings in t
 aggregate performance metrics. Prior benchmark studies consistently report very high overall accuracy for tree-based models. For instance, Abrar et al. demonstrate that 
 Random Forest, Extra Trees, and Decision Tree classifiers achieve accuracies exceeding 99\% on the NSL-KDD dataset when evaluated primarily using global accuracy and 
 class-frequency weighted metrics \cite{abrar2020machine}. Similar conclusions are reported by Hegde et al. and Hong et al., who identify Random Forest as the strongest 
-performer across accuracy, precision, and ROC--AUC after preprocessing and feature selection \cite{hegde2024intrusion, hong2021machine}. Our binary classification results 
-align closely with these findings: all evaluated models achieve high accuracy and $F_{1}$-scores, confirming that ML-based IDS can effectively separate normal from attack 
+performer across accuracy, precision, and ROC--AUC after preprocessing and feature selection \cite{hegde2024intrusion, hong2021machine}. Our binary classification results are in line with these trends: all evaluated models achieve reasonably high accuracy and $F_{1}$-scores, confirming that ML-based IDS can effectively separate normal from attack 
 traffic under the NSL-KDD benchmark.
 
 In contrast, when extending the analysis to the multi-class setting and emphasizing attack-centric metrics, our results diverge from much of the prior literature. While many 
@@ -74,8 +71,7 @@ previously unseen attack types under class imbalance \cite{tavallaee2009detailed
 
 Despite the strong overall performance achieved by the evaluated models, several limitations limit the conclusions of this study. First, the NSL-KDD dataset remains highly 
 imbalanced, with rare attack categories such as R2L and U2R representing only a small fraction of the data. This imbalance leads to substantial class overlap in the feature 
-space and severely limits the ability of all evaluated models to detect minority attacks in the multi-class setting. Second, the fixed feature representation restricts 
-discrimination between rare attacks and normal traffic, as many security-critical signals are weak and easily overshadowed by dominant patterns. Third, evaluation is limited 
+space and severely limits the ability of all evaluated models to detect minority attacks in the multi-class setting. Second, the fixed feature representation limits discrimination between rare attacks and normal traffic. Many security-critical signals are weak and are easily overshadowed by dominant patterns. Third, evaluation is limited 
 to a single benchmark dataset. While NSL-KDD enables controlled comparison, it does not fully capture the diversity and dynamics of modern network traffic.
 
 Future work should therefore prioritize data-focused strategies rather than increased model complexity. Feature selection techniques aimed at reducing class overlap, 
@@ -87,11 +83,9 @@ directly address the main limitations of this study and would support more pract
 
 \section{Updates based on the poster presentation feedbacks}
 
-Following the feedback received during the poster presentation, several refinements were integrated into the study to enhance the depth and clarity of the analysis. A significant 
+Following the feedback received during the poster presentation, several refinements were integrated into the study to enhance the quality of our analysis. A significant 
 methodological update involved the additional use of one-hot encoding for categorical features, ensuring that the models could more effectively interpret non-numerical relationships 
-within the data. To better illustrate the foundational challenges of the dataset, an additional graph was included to explicitly visualize the class imbalance issue, highlighting 
-the disparity between dominant traffic and minority attack types. 
-The evaluation framework was also strengthened by prioritizing security-critical metrics. Specifically, the analysis now incorporates attack-only macro recall to provide a more 
-realistic assessment of model performance across imbalanced categories, moving beyond the optimistic bias of standard averages. Furthermore, the results section was updated to 
+within the data. To better illustrate the dataset challenges, an additional graph was included to compare class composition between the validation and test sets. It highlights the distribution shift between dominant traffic classes and minority attack types in the test data. 
+The evaluation framework was also strengthened by prioritizing security-critical metrics. Specifically, the analysis now includes attack-only macro recall to better assess performance across imbalanced categories. This metric avoids the optimistic bias of standard averages. Furthermore, the results section was updated to 
 place a deliberate focus on false negatives. By analyzing these undetected intrusions more closely, the study offers a more nuanced perspective on the operational risks and the 
 sensitivity required for effective real-world intrusion detection.
