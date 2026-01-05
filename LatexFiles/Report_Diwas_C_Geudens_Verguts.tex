@@ -24,22 +24,19 @@
 \begin{abstract}
   This study evaluates the effectiveness of three distinct machine learning model families, 
   Logistic Regression, Random Forest, and Neural Networks for network intrusion detection 
-  using the NSL-KDD benchmark dataset. Motivated by the increasing complexity of cyber threats 
-  and recent high-profile breaches, the research compares linear, ensemble-based, 
-  and non-linear approaches in both binary and multi-class classification scenarios. 
-  By employing a unified preprocessing pipeline and addressing severe class imbalance through class-weighted learning, 
-  the project evaluates model performance beyond overall accuracy, with particular focus on
-  rare attack categories such as User-to-Root (U2R) and Remote-to-Local (R2L). Key results indicate that, while all 
-  models achieve high binary accuracy (up to 77.8\%), their ability to generalize to 
-  unseen attack patterns in the test set varies significantly. Random Forest provides the 
-  best stability and ranking performance (ROC-AUC of 0.962), yet the Neural Network offers 
-  superior sensitivity to critical minority attacks, achieving a U2R recall of 0.70. 
-  However, the substantial performance drop between validation and test sets highlights 
-  that model expressiveness alone cannot overcome the inherent limitations of imbalanced 
-  training data. We conclude that, while Random Forest offers the most practical balance for general detection,
-   effective multi-class intrusion detection depends on data-centric strategies, including hierarchical pipelines and
-    anomaly-aware learning, to identify rare, high-risk security threats. 
-
+  using the NSL-KDD benchmark dataset. Motivated by the limitations of traditional rule-based intrusion detection 
+  systems and the increasing complexity of modern cyber attacks, the analysis compares linear, tree-based, and non-linear models 
+  in both binary (normal vs. attack) and multi-class classification settings. A unified preprocessing pipeline is applied to all models, 
+  and severe class imbalance is addressed through class-weighted learning. Model performance is assessed using accuracy, macro-averaged 
+  metrics, and attack-aware evaluation measures, including per-class recall, confusion-matrix analysis, and attack-only macro recall that 
+  excludes the dominant Normal class. In the binary setting, all models achieve relatively high test accuracy (up to 0.778) and strong ranking performance, 
+  as reflected by ROC–AUC values above 0.89, but show a substantial performance drop from validation to test data, indicating limited generalization to unseen attack types. 
+  In the multi-class setting, aggregate metrics mask major weaknesses in minority attack detection. Random Forest achieves near-zero recall for R2L and U2R attacks, 
+  while Logistic Regression improves minority recall at the cost of strong over-generalization. Neural Networks provide the most balanced attack detection, 
+  substantially improving U2R recall but introducing additional confusion among non-dominant classes. Overall, the results show that while Random Forest offers the 
+  most practical balance for general intrusion detection, effective multi-class intrusion detection is limited primarily by 
+  data characteristics rather than model choice. This finding highlights the importance of attack-aware evaluation and data-centric strategies such as hierarchical detection pipelines, 
+  targeted handling of rare attack classes, and validation on distribution-shifted test data.
 \end{abstract}
 
 \listoffiguresandtables
